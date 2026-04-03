@@ -1,1 +1,3 @@
 handler: chatbotAgent/index.chatbotAgent
+package:
+  artifact: "./dist/chatbotAgent.zip"

@@ -1,6 +1,6 @@
 const path = require("path");
-const nodeExternals = require("webpack-node-externals");
 const ZipPlugin = require("zip-webpack-plugin");
+const nodeExternals = require("webpack-node-externals");
 
 const entries = {
   chatbotAgent: "./chatbotAgent/index.ts",
@@ -57,14 +57,4 @@ module.exports = {
         path: path.resolve(__dirname, "dist"),
       })
   ),
-  // optimization: {
-  //     minimize: false,
-  //     minimizer: [
-  //         new TerserPlugin({
-  //             terserOptions: {
-  //                 ecma: 2020,
-  //             },
-  //         }),
-  //     ],
-  // },
 };

@@ -10,8 +10,7 @@ provider:
   region: us-west-2
 
 plugins:
-  # - serverless-dotenv-plugin
-  - serverless-plugin-typescript
+  # - serverless-plugin-typescript
 
 functions:
   chatbotAgent: ${file(./resources/functions/chatbotAgent.yml)}
