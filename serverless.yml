@@ -12,5 +12,12 @@ provider:
 plugins:
   # - serverless-plugin-typescript
 
+custom:
+  ChatbotAgentMemoryName: ai-chatbot-agent-memory-${sls:stage}
+
+resources:
+  Resources:
+    ChatbotMemory: ${file(./resources/database/chatbotAgentMemory.yml)}
+
 functions:
   chatbotAgent: ${file(./resources/functions/chatbotAgent.yml)}
