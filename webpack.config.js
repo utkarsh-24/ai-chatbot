@@ -23,10 +23,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, "dist/"),
     filename: "[name]/index.js",
-    library: {
-      type: "module",
-    },
-    chunkFormat: "module",
+    libraryTarget: "commonjs",
   },
   resolve: {
     extensions: [".ts", ".js", ".mjs"],
