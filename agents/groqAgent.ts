@@ -1,13 +1,13 @@
 import { createAgent } from "langchain";
 import { ChatOpenAI } from "@langchain/openai";
 
-export class ChatbotAgent {
+export class GroqAgent {
   private agent;
-  private static __instance: ChatbotAgent;
+  private static __instance: GroqAgent;
 
   constructor() {
-    if (ChatbotAgent.__instance) {
-      return ChatbotAgent.__instance;
+    if (GroqAgent.__instance) {
+      return GroqAgent.__instance;
     }
 
     const model = new ChatOpenAI({
@@ -24,7 +24,7 @@ export class ChatbotAgent {
     });
 
     this.agent = agent;
-    ChatbotAgent.__instance = this;
+    GroqAgent.__instance = this;
   }
 
   async invoke(message: string) {

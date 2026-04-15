@@ -13,7 +13,7 @@ provider:
     GROQ_API_KEY: ${self:custom.GroqApiKey}
 
 custom:
-  ChatbotAgentMemoryName: ai-chatbot-agent-memory-${sls:stage}
+  AgentMemoryName: ai-chatbot-${sls:stage}-agent-memory
   GroqApiKey: ${file(./resources/secrets/credentials.yml):GroqApiKey}
 
 plugins:
@@ -21,7 +21,7 @@ plugins:
 
 resources:
   Resources:
-    ChatbotMemory: ${file(./resources/database/chatbotAgentMemory.yml)}
+    AgentMemory: ${file(./resources/database/agentMemory.yml)}
 
 functions:
-  chatbotAgent: ${file(./resources/functions/chatbotAgent.yml)}
+  chatbot: ${file(./resources/functions/chatbot.yml)}

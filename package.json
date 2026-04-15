@@ -35,6 +35,7 @@
   "author": "Utkarsh Patel",
   "license": "ISC",
   "dependencies": {
+    "@langchain/openai": "^1.4.4",
     "langchain": "^1.3.3"
   }
 }

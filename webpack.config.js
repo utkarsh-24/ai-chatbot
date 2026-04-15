@@ -3,7 +3,7 @@ const ZipPlugin = require("zip-webpack-plugin");
 const nodeExternals = require("webpack-node-externals");
 
 const entries = {
-  chatbotAgent: "./chatbotAgent/index.ts",
+  chatbot: "./chatbot/index.ts",
 };
 
 module.exports = {

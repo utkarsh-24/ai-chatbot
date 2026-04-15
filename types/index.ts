@@ -1,1 +1,1 @@
-export * from "./chatbotAgentEvent";
+export * from "./chatbotEvent";
