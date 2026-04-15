@@ -4,16 +4,20 @@ frameworkVersion: ^3.12.0
 
 package:
   individually: true
+
 provider:
   name: aws
   runtime: nodejs18.x
   region: us-west-2
-
-plugins:
-  # - serverless-plugin-typescript
+  environment:
+    GROQ_API_KEY: ${self:custom.GroqApiKey}
 
 custom:
   ChatbotAgentMemoryName: ai-chatbot-agent-memory-${sls:stage}
+  GroqApiKey: ${file(./resources/secrets/credentials.yml):GroqApiKey}
+
+plugins:
+  # - serverless-plugin-typescript
 
 resources:
   Resources:
