@@ -1,6 +1,6 @@
 Type: AWS::S3Vectors::VectorBucket
 Properties:
-  VectorBucketName: ${self:custom.ChatbotAgentMemoryName}
+  VectorBucketName: ${self:custom.AgentMemoryName}
   # EncryptionConfiguration:
   #   EncryptionType: AES256
   # Tags:

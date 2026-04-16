@@ -4,20 +4,34 @@ frameworkVersion: ^3.12.0
 
 package:
   individually: true
+
 provider:
   name: aws
   runtime: nodejs18.x
   region: us-west-2
-
-plugins:
-  # - serverless-plugin-typescript
+  environment:
+    GROQ_API_KEY: ${self:custom.GroqApiKey}
 
 custom:
-  ChatbotAgentMemoryName: ai-chatbot-agent-memory-${sls:stage}
+  esbuild:
+    bundle: true
+    minify: true
+    keepNames: true
+    sourcemap: false
+    target: node20
+    platform: node
+    concurrency: 10
+    exclude:
+      - "@aws-sdk/*"
+  AgentMemoryName: ai-chatbot-${sls:stage}-agent-memory
+  GroqApiKey: ${file(./resources/secrets/credentials.yml):GroqApiKey}
+
+plugins:
+  - serverless-esbuild
 
 resources:
   Resources:
-    ChatbotMemory: ${file(./resources/database/chatbotAgentMemory.yml)}
+    AgentMemory: ${file(./resources/database/agentMemory.yml)}
 
 functions:
-  chatbotAgent: ${file(./resources/functions/chatbotAgent.yml)}
+  chatbot: ${file(./resources/functions/chatbot.yml)}

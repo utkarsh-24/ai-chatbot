@@ -1,0 +1,7 @@
+handler: chatbot/index.chatbot
+package:
+  artifact: "./dist/chatbot.zip"
+events:
+  - httpApi:
+      method: POST
+      path: /api/v1/chatbot
