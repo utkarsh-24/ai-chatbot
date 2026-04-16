@@ -13,11 +13,21 @@ provider:
     GROQ_API_KEY: ${self:custom.GroqApiKey}
 
 custom:
+  esbuild:
+    bundle: true
+    minify: true
+    keepNames: true
+    sourcemap: false
+    target: node20
+    platform: node
+    concurrency: 10
+    exclude:
+      - "@aws-sdk/*"
   AgentMemoryName: ai-chatbot-${sls:stage}-agent-memory
   GroqApiKey: ${file(./resources/secrets/credentials.yml):GroqApiKey}
 
 plugins:
-  # - serverless-plugin-typescript
+  - serverless-esbuild
 
 resources:
   Resources:
