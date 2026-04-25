@@ -1,9 +1,11 @@
 import { createAgent } from "langchain";
 import { ChatOpenAI } from "@langchain/openai";
+import { MemorySaver } from "@langchain/langgraph";
 
 export class GroqAgent {
   private agent;
   private static __instance: GroqAgent;
+  private session;
 
   constructor() {
     if (GroqAgent.__instance) {
@@ -18,24 +20,32 @@ export class GroqAgent {
       },
     });
 
+    this.session = new MemorySaver();
+
     const agent = createAgent({
       model,
       tools: [],
+      checkpointer: this.session,
     });
 
     this.agent = agent;
     GroqAgent.__instance = this;
   }
 
-  async invoke(message: string) {
-    const agentResponse = await this.agent.invoke({
-      messages: [
-        {
-          role: "user",
-          content: message,
-        },
-      ],
-    });
+  async invoke(message: string, userId: number) {
+    const agentResponse = await this.agent.invoke(
+      {
+        messages: [
+          {
+            role: "user",
+            content: message,
+          },
+        ],
+      },
+      {
+        configurable: { thread_id: userId },
+      }
+    );
     const aiMessage = agentResponse.messages[agentResponse.messages.length - 1];
     return aiMessage.content;
   }
