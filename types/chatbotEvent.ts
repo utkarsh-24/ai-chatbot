@@ -1,4 +1,7 @@
+import { AgentType } from "../utils";
+
 export type TChatbotEvent = {
-  userId: number;
+  userId: string;
+  agentType: AgentType;
   message: string;
 };

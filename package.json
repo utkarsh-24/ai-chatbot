@@ -15,7 +15,8 @@
   "scripts": {},
   "dependencies": {
     "@langchain/openai": "^1.4.4",
-    "langchain": "^1.3.3"
+    "langchain": "^1.3.3",
+    "mathjs": "^15.2.0"
   },
   "devDependencies": {
     "@types/aws-lambda": "^8.10.161",
