@@ -1,5 +1,6 @@
 import { createAgent } from "langchain";
 import { MemorySaver } from "@langchain/langgraph";
+import { AgentStepLogger } from "../utils";
 
 export class Agent {
   private model;
@@ -33,6 +34,7 @@ export class Agent {
       },
       {
         configurable: { thread_id: sessionId },
+        callbacks: [new AgentStepLogger()],
       }
     );
     const aiMessage = agentResponse.messages[agentResponse.messages.length - 1];

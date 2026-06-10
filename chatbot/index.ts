@@ -1,7 +1,7 @@
 import { processEvent } from "./service";
 import { APIGatewayProxyHandlerV2 } from "aws-lambda";
 
-export const chatbot: APIGatewayProxyHandlerV2 = async (event) => {
+export const chatbot: APIGatewayProxyHandlerV2 = async (event: any) => {
   try {
     const eventDetails = JSON.parse(event.body);
     const result = await processEvent(eventDetails);
